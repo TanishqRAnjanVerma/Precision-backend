@@ -17,7 +17,19 @@ const port = process.env.PORT || 4000;
 // middleware
 
 app.use(express.json());
-app.use(cors());
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: [
+      "https://precision-frontend.onrender.com",
+      "https://precision-admin-panel.onrender.com",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "token"],
+    credentials: true,
+  })
+);
 
 // DB Connection
 
